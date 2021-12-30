@@ -1,0 +1,17 @@
+<p *ngIf="player<3">Player {{player}}</p>
+
+<p *ngIf="player==1">{{ player1Choice }}</p>
+<p *ngIf="player==2">{{ player2Choice }}</p>
+
+
+<button *ngIf="player<3" (click)="setPlayerChoice('rock')">Rock</button>
+<button *ngIf="player<3" (click)="setPlayerChoice('paper')">Paper</button>
+<button *ngIf="player<3" (click)="setPlayerChoice('scissors')">Scissors</button>
+
+
+<button *ngIf="player1Choice && player==1" (click)="switchPlayer()">Switch Players</button>
+<button *ngIf="player2Choice && player==2" (click)="switchPlayer()">Check Winner</button>
+
+<button *ngIf="player==3 && winner == ''"></button>
+
+<p>{{winner}}</p>

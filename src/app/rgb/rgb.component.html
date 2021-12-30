@@ -1,0 +1,9 @@
+
+<div [ngStyle]="{'color': '#'+textColor}">
+<p *ngIf="player < 3">Player {{ player }}</p>
+<label *ngIf="player < 3" for="playerInput">#</label>
+<input id="playerInput" type="text" *ngIf="player == 1" [(ngModel)]="player1Choice" (input)="handlePlayerChoice($event)">
+<input id="playerInput" type="text" *ngIf="player == 2" [(ngModel)]="player2Choice" (input)="handlePlayerChoice($event)">
+<button *ngIf="player < 3" (click)="switchPlayer()">Submit</button>
+<p>{{this.winner}}</p>
+</div>
