@@ -11,9 +11,13 @@ export class AppComponent {
   backgroundColor: string = 'fff';
 
   isRegular(i: boolean) {
+    if (this.regular != i) {
+      this.backgroundColor = 'fff';
+    }
     this.show = true;
     this.regular = i;
   }
+
   handleColorChange(color: string) {
     this.backgroundColor = color;
   }

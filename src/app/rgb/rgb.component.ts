@@ -68,4 +68,14 @@ export class RGBComponent {
       this.currChoiceEvent.emit(this.currChoice);
     }
   }
+
+  reset() {
+    this.player = 1;
+    this.player1Choice = '';
+    this.player2Choice = '';
+    this.currChoice = '';
+    this.winner = '';
+    this.currChoiceEvent.emit('fff');
+    this.textColor = '000';
+  }
 }

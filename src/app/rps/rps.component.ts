@@ -60,4 +60,11 @@ export class RPSComponent {
 
     this.winner += ' Wins!';
   }
+
+  reset() {
+    this.player = 1;
+    this.player1Choice = '';
+    this.player2Choice = '';
+    this.winner = '';
+  }
 }

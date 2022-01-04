@@ -5,5 +5,6 @@
 <input id="playerInput" type="text" *ngIf="player == 1" [(ngModel)]="player1Choice" (input)="handlePlayerChoice($event)">
 <input id="playerInput" type="text" *ngIf="player == 2" [(ngModel)]="player2Choice" (input)="handlePlayerChoice($event)">
 <button *ngIf="player < 3" (click)="switchPlayer()">Submit</button>
+<button *ngIf="player == 3" (click)="reset()">Play Again</button>
 <p>{{this.winner}}</p>
 </div>
