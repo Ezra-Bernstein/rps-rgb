@@ -1,10 +1,41 @@
 
-<div [ngStyle]="{'color': '#'+textColor}">
-<p *ngIf="player < 3">Player {{ player }}</p>
-<label *ngIf="player < 3" for="playerInput">#</label>
-<input id="playerInput" type="text" *ngIf="player == 1" [(ngModel)]="player1Choice" (input)="handlePlayerChoice($event)">
-<input id="playerInput" type="text" *ngIf="player == 2" [(ngModel)]="player2Choice" (input)="handlePlayerChoice($event)">
-<button *ngIf="player < 3" (click)="switchPlayer()">Submit</button>
-<button *ngIf="player == 3" (click)="reset()">Play Again</button>
-<p>{{this.winner}}</p>
+<div>
+    <h3 [ngStyle]="{'color': '#'+textColor}" *ngIf="player < 3">Player {{ player }}</h3>
+</div>
+
+<div>
+    <mat-form-field *ngIf="player < 3" appearance="fill">
+        <mat-label>Enter a hex color here</mat-label>
+
+        <input matInput placeholder="123456" id="playerInput" type="text" *ngIf="player == 1" [(ngModel)]="player1Choice" (input)="handlePlayerChoice($event)" FormControlName="p1FormControl">
+        <button *ngIf="player1Choice && player == 1" matSuffix mat-icon-button aria-label="Clear" (click)="player1Choice=''"><mat-icon>close</mat-icon></button>
+        
+        <input color="accent" matInput placeholder="123456" id="playerInput" type="text" *ngIf="player == 2" [(ngModel)]="player2Choice" (input)="handlePlayerChoice($event)" FormControlName="p2FormControl">
+        <button *ngIf="player2Choice && player == 2" matSuffix mat-icon-button aria-label="Clear" (click)="player1Choice=''"><mat-icon>close</mat-icon></button>
+
+        <mat-error *ngIf="p1FormControl.hasError('minLength') || p1FormControl.hasError('maxLength')">
+            Must be 6 characters
+        </mat-error>
+        <mat-error *ngIf="p1FormControl.hasError('required')">
+            Input is <strong>required</strong>
+        </mat-error>
+
+        <mat-error *ngIf="p2FormControl.hasError('minLength') || p2FormControl.hasError('maxLength')">
+            Must be 6 characters
+        </mat-error>
+        <mat-error *ngIf="p2FormControl.hasError('required')">
+            Input is <strong>required</strong>
+        </mat-error>
+
+    </mat-form-field>
+</div>
+
+<div>
+    <h3 [ngStyle]="{'color': '#'+textColor}" >{{this.winner}}</h3>
+</div>
+
+<div>
+<button mat-raised-button color="accent" *ngIf="player < 3" (click)="switchPlayer()">Submit</button>
+<button mat-raised-button color="warn" *ngIf="player == 3" (click)="reset()">Play Again</button>
+
 </div>

@@ -8,11 +8,11 @@ import { Component } from '@angular/core';
 export class AppComponent {
   show: boolean = false;
   regular: boolean = true;
-  backgroundColor: string = 'fff';
+  backgroundColor: string = '363636';
 
   isRegular(i: boolean) {
     if (this.regular != i) {
-      this.backgroundColor = 'fff';
+      this.backgroundColor = '363636';
     }
     this.show = true;
     this.regular = i;

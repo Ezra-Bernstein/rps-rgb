@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-rgb',
@@ -13,12 +14,24 @@ export class RGBComponent {
   currChoice: string = '';
   @Output() currChoiceEvent = new EventEmitter<string>();
   winner = '';
-  textColor = '000';
+  textColor = 'fff';
+
+  p1FormControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(6),
+    Validators.maxLength(6),
+  ]);
+
+  p2FormControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(6),
+    Validators.maxLength(6),
+  ]);
 
   switchPlayer() {
     this.player++;
-    this.currChoice = 'fff';
-    this.textColor = '000';
+    this.currChoice = '363636';
+    this.textColor = 'fff';
     this.currChoiceEvent.emit(this.currChoice);
     if (this.player == 3) {
       this.showWinner();
@@ -75,7 +88,7 @@ export class RGBComponent {
     this.player2Choice = '';
     this.currChoice = '';
     this.winner = '';
-    this.currChoiceEvent.emit('fff');
-    this.textColor = '000';
+    this.currChoiceEvent.emit('363636');
+    this.textColor = 'fff';
   }
 }

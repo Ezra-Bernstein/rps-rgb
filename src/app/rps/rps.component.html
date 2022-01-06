@@ -1,18 +1,26 @@
-<p *ngIf="player<3">Player {{player}}</p>
+<div [ngStyle]="{'display': 'flex', 'justify-content': 'center', 'padding': '0px', 'position': 'relative', 'top': '50%'}">
+<h3 *ngIf="player<3">Player {{player}}</h3>
+</div>
 
-<p *ngIf="player==1">{{ player1Choice }}</p>
-<p *ngIf="player==2">{{ player2Choice }}</p>
+<div [ngStyle]="{'display': 'flex', 'justify-content': 'center', 'padding': '0px', 'position': 'relative', 'top': '50%'}">
+<h3 *ngIf="player==1">{{ player1Choice }}</h3>
+<h3 *ngIf="player==2">{{ player2Choice }}</h3>
+</div>
+
+<div [ngStyle]="{'display': 'flex', 'justify-content': 'center', 'padding': '2px', 'position': 'relative', 'top': '50%'}">
+<button mat-raised-button *ngIf="player<3" (click)="setPlayerChoice('rock')" aria-label="rock">🪨</button>
+<button mat-raised-button *ngIf="player<3" (click)="setPlayerChoice('paper')" aria-label="paper">📄</button>
+<button mat-raised-button *ngIf="player<3" (click)="setPlayerChoice('scissors')" aria-label="scissors">✂️</button>
+</div>
 
 
-<button *ngIf="player<3" (click)="setPlayerChoice('rock')">Rock</button>
-<button *ngIf="player<3" (click)="setPlayerChoice('paper')">Paper</button>
-<button *ngIf="player<3" (click)="setPlayerChoice('scissors')">Scissors</button>
+<div [ngStyle]="{'display': 'flex', 'justify-content': 'center', 'padding': '2px', 'position': 'relative', 'top': '50%'}">
+<button mat-raised-button color="warn" *ngIf="player1Choice && player==1" (click)="switchPlayer()">Switch Players</button>
+<button mat-raised-button color="warn" *ngIf="player2Choice && player==2" (click)="switchPlayer()">Check Winner</button>
+<h3>{{winner}}</h3>
+</div>
 
+<div [ngStyle]="{'display': 'flex', 'justify-content': 'center', 'padding': '5px', 'position': 'relative', 'top': '50%'}">
 
-<button *ngIf="player1Choice && player==1" (click)="switchPlayer()">Switch Players</button>
-<button *ngIf="player2Choice && player==2" (click)="switchPlayer()">Check Winner</button>
-
-<button *ngIf="player==3 && winner == ''"></button>
-
-<p>{{winner}}</p>
-<button *ngIf="player==3" (click)="reset()">Play Again</button>
+<button mat-raised-button color="warn" *ngIf="player==3" (click)="reset()">Play Again</button>
+</div>
